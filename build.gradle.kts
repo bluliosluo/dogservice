@@ -22,6 +22,16 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+
+	/// aws
+	implementation(platform("software.amazon.awssdk:bom:2.25.57"))
+
+	// s3
+	implementation("software.amazon.awssdk:s3")
+
+	// sqs
+	implementation("software.amazon.awssdk:sqs")
+
 	// immutables
 	// implementation("org.immutables:value:2.10.1")
 	annotationProcessor("org.immutables:value:2.10.1")

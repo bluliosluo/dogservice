@@ -11,5 +11,21 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=demo_db
 
+  # aws local deployment
+  localstack:
+    image: localstack/localstack:3.0.2
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - SERVICES=s3, sqs, kinesis, cloudwatch, dynamo
+    ports:
+      - "4549-4566:4549-4566"
+    volumes:
+      - ./aws:/etc/localstack/init/ready.d/
+      - localstack_data:/var/lib/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+
 volumes:
   metadata_data:
+  localstack_data:
